@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="row text-center p-3">
+        <h2 class="fw-bold text-white">----- តារាងកម្ចៃប្រាក់-----</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-8">
+                <h2 class="fw-bold text-white">ផ្លាស់ប្តូរកម្ចៃប្រាក់</h2>
+            </div>
+            <div class="col-lg-9 col-4" style="text-align: left;">
+                <button class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">ផ្លាស់ប្តូរកម្ចៃប្រាក់</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content model-wrapper">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="exampleModalLabel">ផ្លាស់ប្តូរកម្ចៃប្រាក់</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" placeholder="បញ្ចូលទឹកប្រាក់" class="input w-100 p-2 mb-2"
+                        [(ngModel)]="fixedValue" />
+                    <input type="text" placeholder="បញ្ចូលការប្រាក់" class="input w-100 p-2 mb-2"
+                        [(ngModel)]="fixValueInterest" />
+                    <input type="text" placeholder="បញ្ចូលរយៈពេល" class="input w-100 p-2"
+                        [(ngModel)]="fixValueDuration" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">បិទ</button>
+                    <button type="button" class="btn btn-primary" (click)="calas()">រក្សាទុក</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table mb-0">
+        <thead class="tableheader ">
+            <tr>
+                <th>តម្លៃ</th>
+                <th>រយះពេល</th>
+                <th>ការប្រាក់</th>
+                <th>កាលបរិច្ឆេទ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{price | currency:"USD"}}</td>
+                <td>{{duration}}</td>
+                <td>{{interestRate}}%</td>
+                <td>{{currentDate | date:'yyyy-MM-dd'}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table border="1" class="table mt-0">
+        <thead>
+            <tr class="tableheader">
+                <th>ខែ</th>
+                <th>តម្លៃថ្លៃដើម</th>
+                <th>ការប្រាក់</th>
+                <th>តម្លៃសរុប</th>
+                <th>កាលបរិច្ឆេទ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (row of LoanList(); track row.no){
+            <tr [class.text-green]="row.no % 2 !== 0">
+                <td>{{ row.no }}</td>
+                <td>{{ row.principal.toFixed(2) | currency:"USD" }}</td>
+                <td>{{ row.interest.toFixed(2) | currency:"USD" }}</td>
+                <td>{{ row.total.toFixed(2) | currency:"USD" }}</td>
+                <td>{{ row.crrDate | date:'yyyy-MM-dd' }}</td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr class="tableheader">
+                <td colspan="2"><strong>ការប្រាក់សរុប</strong></td>
+                <td colspan="3">{{ totalInterest() | currency:"USD"}}</td>
+            </tr>
+            <tr class="tableheader">
+                <td colspan="2"><strong>តម្លៃសរុប</strong></td>
+                <td colspan="3">{{ grandTotal().toFixed(2) | currency:"USD" }}</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

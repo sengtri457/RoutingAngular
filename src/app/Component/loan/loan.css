@@ -1,0 +1,54 @@
+table {
+    margin-top: 1.5rem;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid #c8c8c8;
+    padding: 0.3rem 0.5rem;
+    text-align: center;
+}
+
+.tableheader th {
+    color: dodgerblue;
+}
+
+.text-green {
+    background-color: gray;
+    color: white;
+}
+
+.table {
+    background-color: rgb(0, 0, 0);
+    font-family: "Dangrek", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.table>:not(caption)>*>* {
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+}
+
+.tableheader td {
+    font-family: "Dangrek", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: dodgerblue;
+}
+
+h2,
+button,
+input {
+    font-family: "Dangrek", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.model-wrapper {
+    background-color: rgba(126, 126, 126, 0.5);
+    backdrop-filter: blur(5px);
+    color: white;
+}
