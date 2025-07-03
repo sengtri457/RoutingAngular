@@ -64,4 +64,9 @@ export class Recipe {
   totalCash(): number {
     return this.cash - this.total();
   }
+
+  admin: string = 'Admin';
+  catchAdmin(): string {
+    return this.admin;
+  }
 }

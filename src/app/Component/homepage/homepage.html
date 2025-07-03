@@ -1,7 +1,7 @@
 <div class="container text-center mt-2">
     <div class="card p-5 bg-black text-white">
-        <h2 class="mb-4" data-aos="fade-down welcomeText">Welcome to the Financial Hub</h2>
-        <div class="container" data-aos="zoom-in">
+        <h2 class="mb-4">Welcome to the Financial Home</h2>
+        <div class="container">
             <div data-text="Loan" style="--r:-15;" class="glass">
                 <h1 class="fw-bold text-white" routerLink="/LoanSystem">
                     <i class="fa-solid fa-landmark"></i>
@@ -16,20 +16,20 @@
                 </h1>
             </div>
         </div>
-        <div class="row mt-4" data-aos="fade-up">
+        <div class="row mt-4">
             <div class="col-6">
-                <a class="btn-shine" routerLink="/LoanSystem">
+                <a class="btn-shine" routerLink="/LoanSystem" (click)="AlrtLoan()">
                     Go to Loan
                 </a>
             </div>
             <div class="col-6">
-                <a class="btn-shine" routerLink="/Receipe">
+                <a class="btn-shine" routerLink="/Receipe" (click)="AlrtReceipt()">
                     Go to Recipe
                 </a>
             </div>
         </div>
 
-        <div class="row description text-start mt-4" data-aos="fade-up">
+        <div class="row description text-start mt-4">
             <div class="col-md-6 mb-3">
                 <span class="highlight">Receipt System:</span>
                 <p>

@@ -1,0 +1,121 @@
+/* passcode.component.css */
+.passcode-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    /* padding: 20px; */
+}
+
+p {
+    font-family: "Dangrek", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.title {
+    font-size: 20px;
+    margin-bottom: 15px;
+    width: 100%
+}
+
+.circles {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.circle {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #999;
+    border-radius: 50%;
+}
+
+.circle.filled {
+    background-color: #ffffff;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.keypad button {
+    width: 50px;
+    height: 50px;
+    font-size: 15px;
+    font-style: 700;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.keypad button:hover {
+    background-color: white;
+    color: black;
+    box-shadow: rgba(255, 255, 255, 0.8) 0px 25px 50px -12px;
+}
+
+.zero-btn {
+    grid-column: 2 / 3;
+}
+
+.keypad button {
+    border-radius: 50%;
+    outline: none;
+    background-color: transparent;
+    border: 0.5px solid rgb(255, 255, 255);
+    color: white;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+
+.container {
+    /* background-color: rgba(7, 0, 50, 0.5); */
+    backdrop-filter: blur(5px);
+    width: 25%;
+    border-radius: 20px;
+    margin: 20px auto;
+    color: white;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/ac.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 10px;
+
+}
+
+.profiles {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+}
+
+.profiles img {
+    width: 100%;
+}
+
+.number p {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 1000px) {
+    .container {
+        width: 45%;
+    }
+}
