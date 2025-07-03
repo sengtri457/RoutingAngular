@@ -7,4 +7,11 @@ import { RouterLink } from '@angular/router';
   templateUrl: './homepage.html',
   styleUrl: './homepage.css',
 })
-export class Homepage {}
+export class Homepage {
+  AlrtReceipt() {
+    alert('Welcome Receipt Page');
+  }
+  AlrtLoan() {
+    alert('Welcome Loan Page');
+  }
+}

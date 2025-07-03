@@ -1,0 +1,39 @@
+<div class="container mt-2 m-auto text-center">
+    <div class="profiles mb-1">
+        <img src="/img/PortfolioPic.jpg" alt="" class="img-profies">
+    </div>
+    <div class="Number">
+        <p class="">{{phone}}</p>
+        <p class="">{{text}}</p>
+        <p class="text-danger">{{detected()}}</p>
+    </div>
+    <div class="passcode-container">
+        <div class="title">Enter Passcode</div>
+
+        <div class="circles w-100 text-center justify-content-center ">
+            @for (item of Circile; track $index) {
+            <div class="circle" [class.filled]="$index < currentIndex"></div>
+            }
+        </div>
+
+        <div class="keypad">
+            @for (btn of key; track $index) {
+            <button (click)="enterDigits(btn)" [ngClass]="btn === '0' ? 'zero-btn' : ''">
+                {{btn}}
+            </button>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 ">
+            <p>{{passwors}}</p>
+        </div>
+        <div class="col-6 ">
+            <p (click)="delete()">{{Cancel()}}</p>
+        </div>
+    </div>
+    <!-- <div class="controls">
+        <button (click)="Clear()" class="btn btn-primary">Clear</button>
+        <button (click)="delete()" class="btn btn-primary">Delete</button>
+    </div> -->
+</div>
