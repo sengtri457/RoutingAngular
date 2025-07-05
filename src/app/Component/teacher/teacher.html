@@ -1,0 +1,16 @@
+<main>
+    <div class="row">
+        @for (t of displayTeacher(); track t.id) {
+        <div class="col-lg-4 mb-4 col-12">
+            <div class="teacher-profile">
+                <img src="{{t.imgUrl}}" alt="Teacher Profile Picture" class="img-fluid">
+                <h2>{{t.username}}</h2>
+                <p class="title">{{t.title}}</p>
+                <p>{{t.description}}
+                </p>
+                <a href="#" class="btn btn-custom btn-lg">{{t.btnTitle}}</a>
+            </div>
+        </div>
+        }
+    </div>
+</main>

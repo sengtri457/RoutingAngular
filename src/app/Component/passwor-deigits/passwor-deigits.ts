@@ -20,32 +20,41 @@ export class PassworDeigits {
   Cancel = signal('ប៉ោះបង់');
   detected = signal('');
   Admin = signal('User');
+  DetectedAwait = true;
   get Circile() {
     return Array(this.maxLenght);
   }
 
   enterDigits(de: string): void {
-    if (this.currentIndex <= this.maxLenght) {
+    if (this.currentIndex < this.maxLenght) {
       this.code[this.currentIndex] = de;
       this.currentIndex++;
     }
     if (this.currentIndex == this.maxLenght) {
-      this.VerifyCide();
+      setTimeout(() => {
+        this.VerifyCode();
+      }, 0);
     }
     this.Cancel.set('លុប');
     console.log(this.code);
     console.log(this.currentIndex);
   }
-  VerifyCide(): void {
+  VerifyCode(): void {
     const EnterCode = this.code.join('');
-    if (EnterCode == '123456') {
+    if (EnterCode === '123456') {
       this.Admin.set('Admin');
-      this.Rou.navigate(['/dashboard']);
+      this.DetectedAwait = false;
+      this.AwaitLoading();
     } else {
       this.detected.set('សូមបញ្ចូលលេខPINអោយបានត្រឹមត្រូវ');
-      this.Clear();
+
+      // Delay clear instead
+      setTimeout(() => {
+        this.Clear();
+      }, 100); // gives time for the last dot to appear
     }
   }
+
   Clear() {
     this.code = Array(this.maxLenght).fill('');
     this.currentIndex = 0;
@@ -55,5 +64,14 @@ export class PassworDeigits {
       this.currentIndex--;
       this.code[this.currentIndex] = '';
     }
+  }
+  CheckClass() {
+    return this.DetectedAwait ? 'loading' : 'active';
+  }
+  AwaitLoading() {
+    setTimeout(() => {
+      this.CheckClass();
+      this.Rou.navigate(['/dashboard']);
+    }, 2000);
   }
 }

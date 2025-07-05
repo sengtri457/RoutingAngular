@@ -1,4 +1,5 @@
-<div class="container-xxl container-fluid bg-body-secondary p-0 ">
+<div class="container-xxl container-fluid bg-body-secondary p-0 "
+    style=" background: linear-gradient(to bottom right, #f8f9fa, #ffffff);">
     <nav class="wrapper-nav d-lg-block d-none">
         <div class="d-flex justify-content-between align-items-center p-4">
             <div class="wrapper-left">
@@ -22,10 +23,12 @@
         <div class="wrappernavbar bg-body-secondary " [ngClass]="hideNav().navbarClass">
             <ul class="list-group flex-lg-row flex-wrap gap-4 ">
                 <li class="nav-link"><a href="" routerLink="/home">Home</a></li>
-                <li class="nav-link"><a href="" routerLink="/LoanSystem">loan</a></li>
-                <li class="nav-link"><a href="" routerLink="/Receipe">Recipe</a></li>
-                <li class="nav-link"><a href="" routerLink="/home">Home</a></li>
-                <li class="nav-link"><a href="" routerLink="/home">Home</a></li>
+                <li class="nav-link"><a href="" routerLink="/Course">Course</a></li>
+                <li class="nav-link"><a href="" routerLink="/Scedule">Schedule</a></li>
+                <li class="nav-link"><a href="" routerLink="/Attendent">Attendent</a></li>
+                <li class="nav-link"><a href="" routerLink="/Attendent">Score</a></li>
+                <li class="nav-link"><a href="" routerLink="/Teacher">Teacher</a></li>
+                <li class="nav-link"><a href="" routerLink="/Class">Class</a></li>
             </ul>
         </div>
         <div class="row d-flex align-items-center">
@@ -60,7 +63,7 @@
                 <div class=" col-4 mb-3">
                     <div class=" wraper-menu-small" [style.border-left]="'4px solid' + color.color">
                         <h1><i [ngClass]="color.clas"></i></h1>
-                        <h3>{{color.text}}</h3>
+                        <h3 (click)="NavigatePage(color.text)">{{color.text}}</h3>
                     </div>
                 </div>
                 }

@@ -1,6 +1,10 @@
 # RouterAngular
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+We Use Rote To Navigate Any Page We Have:
+Receipt System:
+A receipt payment system records and manages payments received from customers. It creates official receipts, links payments to the right invoices, updates account balances, and ensures accurate financial tracking. Key features include support for multiple payment methods, real-time ledger updates, and reporting tools for better cash flow visibility.
+A loan system is a software application designed to manage the full lifecycle of loans — from application to approval, disbursement, repayments, and closure. It helps lenders (banks, credit unions, microfinance institutions) handle loans efficiently while keeping track of borrower details, schedules, and payments.
 
 ## Development server
 

@@ -1,0 +1,65 @@
+.teacher-profile {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.teacher-profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 5px solid #007bff;
+    /* Accent border */
+}
+
+.teacher-profile h2 {
+    /* font-size: 2rem; */
+    font-weight: 700;
+    color: #343a40;
+    margin-bottom: 0.5rem;
+}
+
+.teacher-profile .title {
+    /* font-size: 1.2rem; */
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+.teacher-profile p {
+    font-size: 0.9rem;
+    color: #495057;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.btn-custom {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+main {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    /* Light background color */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}

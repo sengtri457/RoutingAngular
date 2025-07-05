@@ -75,13 +75,30 @@ export class HideRow implements OnInit {
   }
   CongrateData() {
     return Swal.fire({
-      title: 'Login Sucessful',
+      title: 'welcome Admin',
       icon: 'success',
       draggable: true,
     });
   }
   Loout() {
     this.navigatepage.navigate(['/aba']);
+  }
+  NavigatePage(text: string) {
+    if (text == 'Course') {
+      this.navigatepage.navigate(['/Course']);
+    } else if (text == 'Schedule') {
+      this.navigatepage.navigate(['/Scedule']);
+    } else if (text == 'Attendent') {
+      this.navigatepage.navigate(['/Attendent']);
+    } else if (text == 'Score') {
+      this.navigatepage.navigate(['/Sore']);
+    } else if (text == 'Teacher') {
+      this.navigatepage.navigate(['/Teacher']);
+    } else if (text == 'Class') {
+      this.navigatepage.navigate(['/Class']);
+    } else {
+      alert('No Page found');
+    }
   }
   ngOnInit(): void {
     this.CongrateData();

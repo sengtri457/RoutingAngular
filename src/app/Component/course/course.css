@@ -1,0 +1,56 @@
+body {
+    font-family: 'Inter', sans-serif;
+    /* Using Bootstrap's utility classes for background and centering */
+    /* The min-vh-100 class makes the body take up at least 100% of the viewport height */
+    /* The d-flex, align-items-center, and justify-content-center classes center the content */
+    background: linear-gradient(to bottom right, #0d6efd, #6f42c1);
+    /* Bootstrap primary to purple */
+}
+
+/* Custom styles for the hero section, complementing Bootstrap classes */
+.hero-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    /* White with 90% opacity */
+    border-radius: 1.5rem;
+    /* More rounded corners */
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+    /* Stronger shadow */
+    max-width: 48rem;
+    /* Equivalent to Bootstrap's max-width for md/lg containers */
+    width: 100%;
+    text-align: center;
+    padding: 3rem;
+    /* Generous padding */
+    transition: transform 0.3s ease-in-out;
+}
+
+.hero-section:hover {
+    transform: scale(1.02);
+    /* Slightly enlarge on hover */
+}
+
+/* Custom styles for the button, complementing Bootstrap classes */
+.cta-button {
+    background-color: #6f42c1;
+    /* Bootstrap's purple */
+    border-color: #6f42c1;
+    /* Matching border color */
+    transition: all 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+    background-color: #5a369e;
+    /* Darker purple on hover */
+    border-color: #5a369e;
+    transform: translateY(-0.125rem);
+    /* Lift button slightly on hover */
+}
+
+.cta-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(111, 66, 193, 0.5) !important;
+    /* Custom focus ring */
+}
+
+main {
+    background: linear-gradient(to bottom right, #0d6efd, #6f42c1);
+}
