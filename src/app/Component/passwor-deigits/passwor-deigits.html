@@ -1,52 +1,70 @@
 <div [ngClass]="CheckClass()">
     <div class="loader">
-        <div class="box1"></div>
-        <div class="box2"></div>
-        <div class="box3"></div>
+        <div class="box box-1">
+            <div class="side-left"></div>
+            <div class="side-right"></div>
+            <div class="side-top"></div>
+        </div>
+        <div class="box box-2">
+            <div class="side-left"></div>
+            <div class="side-right"></div>
+            <div class="side-top"></div>
+        </div>
+        <div class="box box-3">
+            <div class="side-left"></div>
+            <div class="side-right"></div>
+            <div class="side-top"></div>
+        </div>
+        <div class="box box-4">
+            <div class="side-left"></div>
+            <div class="side-right"></div>
+            <div class="side-top"></div>
+        </div>
     </div>
 </div>
 
+<main class="wrapper-main">
+    <div class="container text-center wraper-code">
+        <div class="profiles mb-1">
+            <img src="/img/PortfolioPic.jpg" alt="" class="img-profies">
+        </div>
+        <div class="Number">
+            <p class="mt-1 mb-0">{{phone}}</p>
+            <p class="mb-1">{{text}}</p>
+            <p class="text-danger" [ngClass]="{ 'CodeCheck': showError }">{{detected()}}</p>
+        </div>
+        <div class="passcode-container">
+            <div class="title">
+                <p class="m-0">
+                    Enter Passcode
+                </p>
+            </div>
 
-<div class="container text-center wraper-code">
-    <div class="profiles mb-1">
-        <img src="/img/PortfolioPic.jpg" alt="" class="img-profies">
-    </div>
-    <div class="Number">
-        <p class="mt-1 mb-0">{{phone}}</p>
-        <p class="mb-1">{{text}}</p>
-        <p class="text-danger">{{detected()}}</p>
-    </div>
-    <div class="passcode-container">
-        <div class="title">
-            <p class="m-0">
-                Enter Passcode
-            </p>
-        </div>
+            <div class="circles w-100 text-center justify-content-center ">
+                @for (item of code; track $index) {
+                <div class="circle" [class.filled]="item !== ''"></div>
+                }
+            </div>
 
-        <div class="circles w-100 text-center justify-content-center ">
-            @for (item of code; track $index) {
-            <div class="circle" [class.filled]="item !== ''"></div>
-            }
+            <div class="keypad">
+                @for (btn of key; track $index) {
+                <button (click)="enterDigits(btn)" [ngClass]="btn === '0' ? 'zero-btn' : ''">
+                    {{btn}}
+                </button>
+                }
+            </div>
         </div>
-
-        <div class="keypad">
-            @for (btn of key; track $index) {
-            <button (click)="enterDigits(btn)" [ngClass]="btn === '0' ? 'zero-btn' : ''">
-                {{btn}}
-            </button>
-            }
+        <div class="row">
+            <div class="col-6 ">
+                <p>{{passwors}}</p>
+            </div>
+            <div class="col-6 ">
+                <p (click)="delete()">{{Cancel()}}</p>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-6 ">
-            <p>{{passwors}}</p>
-        </div>
-        <div class="col-6 ">
-            <p (click)="delete()">{{Cancel()}}</p>
-        </div>
-    </div>
-    <!-- <div class="controls">
+        <!-- <div class="controls">
         <button (click)="Clear()" class="btn btn-primary">Clear</button>
         <button (click)="delete()" class="btn btn-primary">Delete</button>
     </div> -->
-</div>
+    </div>
+</main>

@@ -10,7 +10,7 @@
 }
 
 .wraper-menu-small {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--light);
     padding: 20px 30px;
     text-align: center;
     border-radius: 20px;
@@ -21,6 +21,16 @@
 .wraper-menu-small:hover {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(21, 18, 18, 0.3) 0px 18px 36px -18px;
     transform: translateY(-5px);
+}
+
+.wrapper-dash {
+    background: linear-gradient(to bottom right, #f8f9fa, #ffffff);
+    color: var(--dark);
+}
+
+.activeDark {
+    background-color: var(--dark);
+    color: var(--light);
 }
 
 h3 {
@@ -39,7 +49,6 @@ h1 {
     left: 0;
     width: 220px;
     padding: 40px;
-    background: #f7f7f7;
     transform: scale(0.8);
     opacity: 0;
     transform-origin: top left;
@@ -64,6 +73,7 @@ h1 {
     transition: background 0.3s, filter 0.3s;
 }
 
+
 .nav-link a {
     font-size: clamp(0.8rem, 5vw, 4.5rem);
     text-decoration: none;
@@ -85,7 +95,7 @@ h1 {
 }
 
 .nav-link a:hover {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 245, 245);
     filter: none;
 }
 

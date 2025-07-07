@@ -17,6 +17,7 @@ interface color {
 })
 export class HideRow implements OnInit {
   isActive = true;
+  isdark = true;
   isAc = true;
   ad = inject(Recipe);
   navigatepage = inject(Router);
@@ -99,6 +100,12 @@ export class HideRow implements OnInit {
     } else {
       alert('No Page found');
     }
+  }
+  darkMode() {
+    return this.isdark ? 'wrapper-dash' : 'activeDark';
+  }
+  toggleDarkMode() {
+    this.isdark = !this.isdark;
   }
   ngOnInit(): void {
     this.CongrateData();

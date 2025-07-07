@@ -21,6 +21,7 @@ export class PassworDeigits {
   detected = signal('');
   Admin = signal('User');
   DetectedAwait = true;
+  showError = false;
   get Circile() {
     return Array(this.maxLenght);
   }
@@ -36,8 +37,15 @@ export class PassworDeigits {
       }, 0);
     }
     this.Cancel.set('លុប');
+
     console.log(this.code);
     console.log(this.currentIndex);
+  }
+
+  triggerError() {
+    setTimeout(() => {
+      this.showError = true;
+    }, 10);
   }
   VerifyCode(): void {
     const EnterCode = this.code.join('');
@@ -47,11 +55,10 @@ export class PassworDeigits {
       this.AwaitLoading();
     } else {
       this.detected.set('សូមបញ្ចូលលេខPINអោយបានត្រឹមត្រូវ');
-
-      // Delay clear instead
+      this.triggerError();
       setTimeout(() => {
         this.Clear();
-      }, 100); // gives time for the last dot to appear
+      }, 200);
     }
   }
 
@@ -64,6 +71,10 @@ export class PassworDeigits {
       this.currentIndex--;
       this.code[this.currentIndex] = '';
     }
+    if (this.currentIndex == 0) {
+      this.Cancel.set('ប៉ោះបង់');
+    }
+    console.log(this.currentIndex);
   }
   CheckClass() {
     return this.DetectedAwait ? 'loading' : 'active';

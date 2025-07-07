@@ -1,1 +1,28 @@
-<p>schedule works!</p>
+<div class="wrapper-scedule">
+
+    <div class="schedule-section">
+        <h1 class="display-4">Our Upcoming Schedule</h1>
+        <p class="lead">
+            View all the important dates, class timings, and event schedules here.
+            Stay organized and never miss a beat!
+        </p>
+
+        <div class="schedule-content">
+            @for (item of displaySchdule(); track $index) {
+
+            <div class="schedule-item">
+                @if(item.instractor !== '' ){
+                <h3>{{item.dateCourse}} - {{item.Course}}</h3>
+                <p><strong>Time:</strong> {{item.time}}</p>
+                <p><strong>Location:</strong>{{item.location}}</p>
+                <p><strong>Instructor:</strong> {{item.instractor}}</p>
+                }
+            </div>
+            }@empty {
+            <p>NO item Yet</p>
+            }
+        </div>
+
+        <a href="#" class="btn btn-custom btn-lg mt-4">Download Full Schedule (PDF)</a>
+    </div>
+</div>
