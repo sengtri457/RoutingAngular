@@ -99,6 +99,13 @@ h1 {
     filter: none;
 }
 
+h3,
+p {
+    font-family: "Dangrek", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
 @keyframes bounceIn {
     0% {
         transform: scale(0.5);

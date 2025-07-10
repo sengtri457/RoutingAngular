@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 import Swal from 'sweetalert2';
@@ -22,47 +22,82 @@ export class HideRow implements OnInit {
   ad = inject(Recipe);
   navigatepage = inject(Router);
   admin = this.ad.catchAdmin();
-  getcolor() {
-    const row: color[] = [
-      {
-        color: '#FF5733',
-        text: 'Course',
-        clas: 'fa-solid fa-graduation-cap',
-      },
-      {
-        color: '#33FF57',
-        text: 'Schedule',
-        clas: 'fa-solid fa-calendar-days',
-      },
-      {
-        color: '#3357FF',
-        text: 'Attendent',
-        clas: 'fa-solid fa-clipboard-user',
-      },
-      {
-        color: '#F1C40F',
-        text: 'Score',
-        clas: 'fa-solid fa-list-check',
-      },
-      {
-        color: '#9B59B6',
-        text: 'Teacher',
-        clas: 'fa-solid fa-person-chalkboard',
-      },
-      {
-        color: '#E67E22',
-        text: 'Class',
-        clas: 'fa-solid fa-landmark',
-      },
-    ];
-    return row;
+
+  theme = signal<'wrapper-dash' | 'activeDark'>('wrapper-dash');
+  toggleTheme() {
+    this.theme.update((current) =>
+      current == 'wrapper-dash' ? 'activeDark' : 'wrapper-dash'
+    );
   }
-  RowColor() {
-    const row: color[] = [
-      { color: '#1ABC9C', text: 'Account', clas: 'fa-solid fa-user' },
-      { color: '#2ECC71', text: 'Login', clas: 'fa-solid fa-user-tie' },
+  currentLanguage: 'en' | 'km' = 'en';
+  getcolor(): color[] {
+    const textMap = {
+      en: ['Course', 'Schedule', 'Attendent', 'Score', 'Teacher', 'Class'],
+      km: [
+        'វគ្គសិក្សា',
+        'កាលវិភាគ',
+        'វត្តមាន',
+        'ពិន្ទុ',
+        'គ្រូបង្រៀន',
+        'ថ្នាក់',
+      ],
+    };
+
+    const classMap = [
+      'fa-solid fa-graduation-cap',
+      'fa-solid fa-calendar-days',
+      'fa-solid fa-clipboard-user',
+      'fa-solid fa-list-check',
+      'fa-solid fa-person-chalkboard',
+      'fa-solid fa-landmark',
     ];
-    return row;
+
+    return textMap[this.currentLanguage].map((text, index) => ({
+      color: ['#FF5733', '#33FF57', '#3357FF', '#F1C40F', '#9B59B6', '#E67E22'][
+        index
+      ],
+      text,
+      clas: classMap[index],
+    }));
+  }
+  RowColor(): color[] {
+    const textMap = {
+      en: ['Account', 'Login'],
+      km: ['គណនី', 'ចូលប្រើប្រាស់'],
+    };
+
+    const classMap = ['fa-solid fa-user', 'fa-solid fa-user-tie'];
+
+    return textMap[this.currentLanguage].map((text, index) => ({
+      color: ['#1ABC9C', '#2ECC71'][index],
+      text,
+      clas: classMap[index],
+    }));
+  }
+  NameChange() {
+    const NameChnage = {
+      en: 'Bun Sengtri',
+      km: 'ប៊ុន សេងទ្រី',
+    };
+    return NameChnage[this.currentLanguage];
+  }
+  AdminChange() {
+    const adminName = {
+      en: 'Admin',
+      km: 'អ្នក​គ្រប់គ្រង',
+    };
+    return adminName[this.currentLanguage];
+  }
+  idChange() {
+    const idChnage = {
+      en: ['Id:', '10 100'],
+      km: ['លេខសម្គាល់', '១០ ​១០០'],
+    };
+    return idChnage[this.currentLanguage]
+      .map((id) => {
+        return id;
+      })
+      .join(' ');
   }
   hideNav() {
     return {
@@ -85,27 +120,41 @@ export class HideRow implements OnInit {
     this.navigatepage.navigate(['/aba']);
   }
   NavigatePage(text: string) {
-    if (text == 'Course') {
-      this.navigatepage.navigate(['/Course']);
-    } else if (text == 'Schedule') {
-      this.navigatepage.navigate(['/Scedule']);
-    } else if (text == 'Attendent') {
-      this.navigatepage.navigate(['/Attendent']);
-    } else if (text == 'Score') {
-      this.navigatepage.navigate(['/Sore']);
-    } else if (text == 'Teacher') {
-      this.navigatepage.navigate(['/Teacher']);
-    } else if (text == 'Class') {
-      this.navigatepage.navigate(['/Class']);
+    const routeMap: Record<string, string> = {
+      Course: '/Course',
+      Schedule: '/Scedule',
+      Attendent: '/Attendent',
+      Score: '/Sore',
+      Teacher: '/Teacher',
+      Class: '/Class',
+      វគ្គសិក្សា: '/Course',
+      កាលវិភាគ: '/Scedule',
+      វត្តមាន: '/Attendent',
+      ពិន្ទុ: '/Sore',
+      គ្រូបង្រៀន: '/Teacher',
+      ថ្នាក់: '/Class',
+    };
+
+    const route = routeMap[text];
+    if (route) {
+      this.navigatepage.navigate([route]);
     } else {
-      alert('No Page found');
+      Swal.fire({
+        title: 'Page Not Found',
+        icon: 'error',
+        draggable: false,
+      });
     }
   }
-  darkMode() {
-    return this.isdark ? 'wrapper-dash' : 'activeDark';
-  }
-  toggleDarkMode() {
-    this.isdark = !this.isdark;
+
+  // darkMode() {
+  //   return this.isdark ? 'wrapper-dash' : 'activeDark';
+  // }
+  // toggleDarkMode() {
+  //   this.isdark = !this.isdark;
+  // }
+  KhmerLanguaue() {
+    this.currentLanguage = this.currentLanguage === 'en' ? 'km' : 'en';
   }
   ngOnInit(): void {
     this.CongrateData();

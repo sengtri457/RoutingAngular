@@ -49,7 +49,7 @@ export class PassworDeigits {
   }
   VerifyCode(): void {
     const EnterCode = this.code.join('');
-    if (EnterCode === '123456') {
+    if (EnterCode === '999999') {
       this.Admin.set('Admin');
       this.DetectedAwait = false;
       this.AwaitLoading();
@@ -65,6 +65,7 @@ export class PassworDeigits {
   Clear() {
     this.code = Array(this.maxLenght).fill('');
     this.currentIndex = 0;
+    this.Cancel.set('ប៉ោះបង់');
   }
   delete() {
     if (this.currentIndex > 0) {

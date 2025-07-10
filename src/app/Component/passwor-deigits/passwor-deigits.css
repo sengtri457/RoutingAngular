@@ -62,6 +62,8 @@ p {
     text-align: center;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    backdrop-filter: blur(2px);
+
 }
 
 .keypad button:hover {
@@ -123,14 +125,15 @@ p {
     width: 25%;
     border-radius: 20px;
     color: white;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url("/img/patern.avif");
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url("/img/bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     padding: 10px;
     backdrop-filter: blur(10px);
     box-shadow: rgba(255, 255, 255, 0.3) 0px 19px rgba(255, 255, 255, 0.22) 0px 15px 12px;
-    border: 2px solid #091521;
+    border: 2px solid #1d2935;
+
 
 }
 
@@ -178,6 +181,7 @@ p {
     position: absolute;
     top: 0;
     left: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     background-color: rgb(255, 255, 255);
@@ -185,6 +189,7 @@ p {
     display: none;
     transition: all 0.4s ease-in-out;
     overflow: hidden;
+    vertical-align: middle;
 }
 
 .active {
