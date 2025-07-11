@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { Recipe } from '../../services/recipe';
 
 @Component({
   selector: 'app-passwor-deigits',
@@ -9,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrl: './passwor-deigits.css',
 })
 export class PassworDeigits {
+  constructor(private Recipe: Recipe) {}
+
   Rou = inject(Router);
   maxLenght: number = 6;
   code: string[] = Array(this.maxLenght).fill('');
@@ -22,6 +25,9 @@ export class PassworDeigits {
   Admin = signal('User');
   DetectedAwait = true;
   showError = false;
+  username: string = 'Admin';
+  password: string = '';
+
   get Circile() {
     return Array(this.maxLenght);
   }
@@ -41,15 +47,15 @@ export class PassworDeigits {
     console.log(this.code);
     console.log(this.currentIndex);
   }
-
   triggerError() {
     setTimeout(() => {
       this.showError = true;
     }, 10);
   }
   VerifyCode(): void {
-    const EnterCode = this.code.join('');
-    if (EnterCode === '999999') {
+    let EnterCode = this.code.join('');
+    this.password = EnterCode;
+    if (this.password === '999999') {
       this.Admin.set('Admin');
       this.DetectedAwait = false;
       this.AwaitLoading();
@@ -60,6 +66,11 @@ export class PassworDeigits {
         this.Clear();
       }, 200);
     }
+  }
+
+  login() {
+    this.Recipe.setUserName(this.username, this.password);
+    this.Rou.navigate(['/dashboard']);
   }
 
   Clear() {
@@ -83,7 +94,7 @@ export class PassworDeigits {
   AwaitLoading() {
     setTimeout(() => {
       this.CheckClass();
-      this.Rou.navigate(['/dashboard']);
+      this.login();
     }, 2000);
   }
 }

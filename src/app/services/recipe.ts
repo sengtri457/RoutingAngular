@@ -7,6 +7,21 @@ import { DataRecipeItems } from '../models/Datarecipe.type';
 export class Recipe {
   constructor() {}
 
+  private _UserName: string = '';
+  private _Password: string = '';
+  setUserName(userName: string, passsword: string) {
+    this._UserName = userName;
+    this._Password = passsword;
+    localStorage.setItem('username', userName);
+    localStorage.setItem('password', passsword);
+  }
+  getUserName(): string {
+    return this._UserName || localStorage.getItem('username') || '';
+  }
+  getPassword(): string {
+    return this._Password || localStorage.getItem('password') || '';
+  }
+
   items: Array<DataRecipeItems> = [
     {
       id: 1,

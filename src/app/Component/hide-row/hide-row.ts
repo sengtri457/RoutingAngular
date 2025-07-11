@@ -16,9 +16,14 @@ interface color {
   styleUrl: './hide-row.css',
 })
 export class HideRow implements OnInit {
+  username: string = '';
+
+  constructor(private Recipe: Recipe) {}
   isActive = true;
   isdark = true;
   isAc = true;
+  AdminCatch: string = '';
+  PasswordAdmin: string = '';
   ad = inject(Recipe);
   navigatepage = inject(Router);
   admin = this.ad.catchAdmin();
@@ -83,15 +88,15 @@ export class HideRow implements OnInit {
   }
   AdminChange() {
     const adminName = {
-      en: 'Admin',
+      en: (this.AdminCatch = this.Recipe.getUserName()),
       km: 'អ្នក​គ្រប់គ្រង',
     };
     return adminName[this.currentLanguage];
   }
   idChange() {
     const idChnage = {
-      en: ['Id:', '10 100'],
-      km: ['លេខសម្គាល់', '១០ ​១០០'],
+      en: ['Id:', (this.PasswordAdmin = this.Recipe.getPassword())],
+      km: ['លេខសម្គាល់:', '៩៩៩៩'],
     };
     return idChnage[this.currentLanguage]
       .map((id) => {
@@ -111,7 +116,7 @@ export class HideRow implements OnInit {
   }
   CongrateData() {
     return Swal.fire({
-      title: 'welcome Admin',
+      title: 'welcome: ' + (this.AdminCatch = this.Recipe.getUserName()),
       icon: 'success',
       draggable: true,
     });
